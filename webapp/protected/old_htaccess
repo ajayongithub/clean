@@ -1,0 +1,19 @@
+Options +FollowSymLinks
+IndexIgnore */*
+RewriteEngine on
+
+# if a directory or a file exists, use it directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# otherwise forward it to index.php
+RewriteRule . index.php
+
+# 1 YEAR
+<filesMatch ".(ico|pdf|flv)$">
+Header set Cache-Control "max-age=29030400, public"
+</filesMatch>
+# 1 YEAR
+<filesMatch ".(jpg|jpeg|png|gif|swf)$">
+Header set Cache-Control "max-age=29030400, public"
+</filesMatch>
